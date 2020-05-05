@@ -1,7 +1,7 @@
 <template lang="html">
     <div id="selected_customer">
-        hello World
-    <booking-item v-for="booking of customersInBookingList" :booking = "booking" />    
+        
+    <booking-item v-for="booking of customersInBookingList" :booking = "booking" />
         <!-- <h2> {{selectedCustomer.name}} </h2> -->
     </div>
 </template>

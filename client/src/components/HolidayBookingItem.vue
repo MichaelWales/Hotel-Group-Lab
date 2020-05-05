@@ -29,7 +29,8 @@ export default {
     deleteHandle(){
       eventBus.$emit('delete-booking',this.booking)
     },
-    checkedInHandle(){return 'hello'}
+    checkedInHandle(){eventBus.$emit('checked-in', this.booking)
+    }
   }
 }
 </script>
