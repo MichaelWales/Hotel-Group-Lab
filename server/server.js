@@ -11,7 +11,7 @@ app.use(cors());
 MongoClient.connect('mongodb://localhost:27017')
 .then((client) => {
   const db = client.db('hotel_bookings');
-  const guestsCollection = db.collection('guests');
+  const guestsCollection = db.collection('bookings');
   const guestsRouter = createRouter(guestsCollection);
   app.use('/api/hotelbookings', guestsRouter);
 })
