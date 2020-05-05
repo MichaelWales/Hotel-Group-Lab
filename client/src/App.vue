@@ -18,8 +18,8 @@
 <script>
 // import BookingForm from '@/components/HolidayBookingForm.vue';
 // import BookingItem from '@/components/HolidayBookingItem.vue';
- import BookingList from '@/components/HolidayBookingList.vue';
-// import BookingService from '@/services/BookingService.js';
+import BookingList from '@/components/HolidayBookingList.vue';
+import BookingService from '@/service/BookingService.js';
 import {eventBus} from '@/main.js';
 
 export default {
@@ -34,8 +34,20 @@ export default {
     components:{
         'booking-list' : BookingList
 
+
+    },
+    mounted(){
+      BookingService.getBookings().then(bookings => this.customers = bookings)
+
+      eventBus.$on('delete-booking', booking => {
+        BookingService.deleteBooking(booking._id)
+        const index = this.customers.findIndex(storeBooking => storeBooking._id === booking._id)
+        this.customers.splice(index,1)
+      })
+
+
     }
-}
+  }
 </script>
 
 <style>
